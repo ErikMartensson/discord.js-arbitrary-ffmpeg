@@ -2,7 +2,7 @@
 
 Installation:
 ```bash
-npm install discord.js-arbitrary-ffmpeg --save
+npm install discord.js-arbitrary-ffmpeg
 ```
 
 Example usage:
@@ -17,14 +17,13 @@ const objBot = new Discord.Client();
 // These params will play a sound file in a much faster speed.
 // Standard KHz rate is 44.1.
 let arrFFmpegParams = [
-	'-i', 'sounds/funny-meme-sound.mp3',
-	'-filter:a', 'asetrate=r=66K'
+  '-i', 'sounds/funny-meme-sound.mp3',
+  '-filter:a', 'asetrate=r=66K'
 ];
 
 const objStreamDispatcher = playArbitraryFFmpeg(
-	objVoiceConnection, // A VoiceConnection from Discord.js
-	arrFFmpegParams,
-	{volume: .25} // Optional stream options (same as for playFile, playStream, etc.)
+  objVoiceConnection, // A VoiceConnection from Discord.js
+  arrFFmpegParams,
+  { volume: .25 } // Optional stream options (same as for playFile, playStream, etc.)
 );
-
 ```
