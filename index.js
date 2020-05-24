@@ -16,16 +16,16 @@ const spawn = require('child_process').spawn;
  */
 const playArbitraryFFmpeg = function(objVoiceConnection, arrFFmpegParams, objOptions) {
 
-	objOptions = objOptions || {};
+	objOptions = objOptions || {type: 'converted', bitrate: 'auto'};
 
 	const arrStandardParams = [
-		'-f', 'mp3',
+		'-f', 'wav',
 		'pipe:1'
 	];
 	const arrFinalParams = arrFFmpegParams.concat(arrStandardParams);
 	let ffmpeg = spawn('ffmpeg', arrFinalParams);
 
-	return objVoiceConnection.playStream(ffmpeg.stdout, objOptions)
+	return objVoiceConnection.playStream(ffmpeg.stdout, objOptions);
 
 };
 
